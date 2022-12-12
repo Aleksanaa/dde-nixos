@@ -17,11 +17,17 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "linuxdeepin";
     repo = pname;
-    rev = "a148240c0852939660780d367df2f118680631d6";
-    sha256 = "sha256-EpZvqnqueSffNokzc7BldEUaF/6wSqoqz8ByXeylW4M=";
+    rev = "3c85297d3f99f1e75160db17d3689106ed882b4d";
+    sha256 = "sha256-ZnuPtWb/+2/bOVsefSPpLVvUe3euxaeLWEgoTfSXiGE=";
   };
 
-  patches = [ ./0001-feat-add-foreignProductTypeName-func.patch ];
+  patches = [
+    (fetchpatch {
+       name = "feat: optimization logic for other distribution";
+       url = "https://github.com/linuxdeepin/dtkcore/commit/828f4d2c25ca77fcd80ad6100b927fb62d2edfbe.patch";
+       sha256 = "sha256-mXsbzJbGOA9gAvFIK/QCFdLx/EAuotXNN4Lp3Tk4oxE";
+    })
+  ];
 
   postPatch = ''
     substituteInPlace src/dsysinfo.cpp \
