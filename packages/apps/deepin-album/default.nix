@@ -17,6 +17,7 @@
 , opencv
 , ffmpeg
 , ffmpegthumbnailer
+, qtimageformats
 , qtbase
 }:
 
@@ -53,6 +54,7 @@ stdenv.mkDerivation rec {
     opencv
     ffmpeg
     ffmpegthumbnailer
+    qtimageformats
   ];
 
   qtWrapperArgs = [
