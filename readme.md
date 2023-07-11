@@ -28,7 +28,7 @@ This is an experimental flake for DDE (Deepin Desktop Environment) on NixOS.
       nixosConfigurations.<hostname> = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          dde-nixos.nixosModules.${system}
+          dde-nixos.nixosModules.default
           {
             services.xserver.desktopManager.deepin-unstable.enable = true;
           }
@@ -51,7 +51,7 @@ example: [rewine's NixOS config](https://github.com/wineee/nixos-config/commit/3
     src = builtins.fetchTarball "https://github.com/linuxdeepin/dde-nixos/archive/master.tar.gz";
   }).defaultNix;
 in {
-  imports = [dde-nixos.nixosModules.${pkgs.system}];
+  imports = [ dde-nixos.nixosModules.default ];
 
   services.xserver.desktopManager.deepin-unstable.enable = true;
 
